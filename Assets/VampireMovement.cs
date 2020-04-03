@@ -33,7 +33,7 @@ public class VampireMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
-    
+    private VampireHealth health;
 
     private Camera cam;
     
@@ -44,6 +44,7 @@ public class VampireMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        health = GetComponent<VampireHealth>();
         cam = Camera.main;
     }
 
@@ -70,6 +71,8 @@ public class VampireMovement : MonoBehaviour
             dashTimer = dashCooldown;
             isBusy = true;
 
+            health.AddInvuln(0.3f);
+
             anim.Play("VampDash");
 
             rb.velocity = new Vector2(1.6f*maxSpeed, 0);
@@ -95,28 +98,7 @@ public class VampireMovement : MonoBehaviour
         //Claw attack
         if (Input.GetMouseButtonDown(0) && attackTimer <= 0 && !isBusy)
         {
-            attackTimer = attackCooldown;
-            isBusy = true;
-
-            rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
-            //Check if mouse is on the right side of the screen
-            Vector3 pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5);
-            if (cam.ScreenToWorldPoint(pos).x > transform.position.x)
-            {
-                sr.flipX = false;
-                clawAttack.GetComponent<SpriteRenderer>().flipX = false;
-                clawAttack.transform.localPosition = new Vector3(0.5f, 0, 0);
-            }
-            else
-            {
-                sr.flipX = true;
-                rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
-
-                clawAttack.GetComponent<SpriteRenderer>().flipX = true;
-                clawAttack.transform.localPosition = new Vector3(-0.5f, 0, 0);
-            }
-
-            anim.Play("VampClaw");
+            VampAttack();
         }
 
         //Move Left
@@ -183,11 +165,11 @@ public class VampireMovement : MonoBehaviour
 
     void EndClaw()
     {
-        Debug.Log("Called a end claw");
         isBusy = false;
         anim.Play("VampIdle");
     }
 
+    //Check whether we are on the ground
     private bool IsGrounded()
     {
         for (int i = -1; i <= 1; i++)
@@ -198,8 +180,45 @@ public class VampireMovement : MonoBehaviour
                 return true;
             }
         }
-        
-
+       
         return false;
+    }
+
+    //Melee claw attack
+    void VampAttack()
+    {
+        attackTimer = attackCooldown;
+        isBusy = true;
+
+        rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
+
+        //Check if mouse is on the right side of the screen
+        Vector3 pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5);
+        if (cam.ScreenToWorldPoint(pos).x > transform.position.x)
+        {
+            sr.flipX = false;
+
+            //Set claw hurtbox
+            clawAttack.GetComponent<SpriteRenderer>().flipX = false;
+            clawAttack.transform.localPosition = new Vector3(0.5f, 0, 0);
+        }
+        else
+        {
+            sr.flipX = true;
+            rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
+
+            clawAttack.GetComponent<SpriteRenderer>().flipX = true;
+            clawAttack.transform.localPosition = new Vector3(-0.5f, 0, 0);
+        }
+
+        anim.Play("VampClaw");
+    }
+
+    //Register a melee hit on an enemy
+    public void RegisterHit()
+    {
+        isBusy = false;
+        rb.velocity = new Vector2(-rb.velocity.x * 0.7f, rb.velocity.y);
+        anim.Play("VampIdle");
     }
 }
