@@ -66,7 +66,7 @@ public class VampireMovement : MonoBehaviour
         IsGrounded();
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && !isBusy)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && !IsBusy())
         {
             dashTimer = dashCooldown;
             isBusy = true;
@@ -83,7 +83,7 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || (isJumpAvailable && isAbleToDoubleJump)) && !isBusy)
+        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || (isJumpAvailable && isAbleToDoubleJump)) && !IsBusy())
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpPower));
@@ -96,13 +96,13 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Claw attack
-        if (Input.GetMouseButtonDown(0) && attackTimer <= 0 && !isBusy)
+        if (Input.GetMouseButtonDown(0) && attackTimer <= 0 && !IsBusy())
         {
             VampAttack();
         }
 
         //Move Left
-        if (Input.GetKey(KeyCode.A) && !isBusy)
+        if (Input.GetKey(KeyCode.A) && !IsBusy())
         {
             if (rb.velocity.x > -maxSpeed)
             {
@@ -118,7 +118,7 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Move Right
-        else if (Input.GetKey(KeyCode.D) && !isBusy)
+        else if (Input.GetKey(KeyCode.D) && !IsBusy())
         {
             if (rb.velocity.x < maxSpeed)
             {
@@ -134,7 +134,7 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Idle, slow velocity
-        else if (!isBusy)
+        else if (!IsBusy())
         {
             rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, accelerationSpeed * Time.deltaTime), rb.velocity.y);
             if (IsGrounded())
@@ -144,7 +144,7 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Falling
-        if (!IsGrounded() && !isBusy)
+        if (!IsGrounded() && !IsBusy())
         {
             if (rb.velocity.y > 0)
             {
@@ -182,6 +182,11 @@ public class VampireMovement : MonoBehaviour
         }
        
         return false;
+    }
+
+    private bool IsBusy()
+    {
+        return isBusy || (health.health <= 0);
     }
 
     //Melee claw attack
