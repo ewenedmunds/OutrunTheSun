@@ -15,6 +15,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(Mathf.Clamp(Mathf.Lerp(transform.position.x, player.transform.position.x, maxSpeed * Time.deltaTime), minX, maxX), Mathf.Clamp(Mathf.Lerp(transform.position.y, player.transform.position.y, maxSpeed * Time.deltaTime), minY, maxY), transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, maxSpeed * Time.deltaTime);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), Mathf.Clamp(transform.position.y, minY, maxY), -10);
     }
 }
