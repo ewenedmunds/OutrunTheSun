@@ -49,9 +49,13 @@ public class VampireHealth : MonoBehaviour
         {
             invulnTimer = invulnCooldown;
             health -= 1;
+
+            //Set health icons
             healthIcons[health].color = new Color(1, 1, 1, 0.3f);
+
             cam.GetComponent<Animator>().Play("CameraShake");
 
+            //Knockback direction
             if (collider.transform.position.x <= transform.position.x)
             {
                 rb.velocity = new Vector2(knockbackSpeedX, knockbackSpeedY);
@@ -61,6 +65,7 @@ public class VampireHealth : MonoBehaviour
                 rb.velocity = new Vector2(-knockbackSpeedX, knockbackSpeedY);
             }
 
+            //Handle death
             if (health <= 0)
             {
                 Debug.Log("you dead");
