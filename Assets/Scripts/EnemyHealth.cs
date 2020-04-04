@@ -26,6 +26,8 @@ public class EnemyHealth : MonoBehaviour
         if (stunTimer > 0)
         {
             stunTimer -= Time.deltaTime;
+
+            //Re-enable enemy's ability to damage player at end of stun period
             if (stunTimer <= 0)
             {
                 hurtbox.enabled = true;
@@ -54,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(collision.transform.localPosition.x * 18, 4);
 
             //Change health
-            health -= 1;
+            health -= collision.gameObject.transform.parent.GetComponent<VampireMovement>().damage;
             if (health <= 0)
             {
                 deathParticles.Play();

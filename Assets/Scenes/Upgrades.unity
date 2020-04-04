@@ -3866,7 +3866,7 @@ MonoBehaviour:
   rightNeighbour: {fileID: 135529739}
   downNeighbour: {fileID: 2115068301}
   upNeighbour: {fileID: 1347151095}
-  name: Night's Shadow
+  name: Misty Step
   description: Allows you to dash through harm using [LSHIFT].
   isUnlocked: 0
 --- !u!1 &1296671715
@@ -4329,7 +4329,7 @@ MonoBehaviour:
   rightNeighbour: {fileID: 135529739}
   downNeighbour: {fileID: 1271647545}
   upNeighbour: {fileID: 1347151095}
-  name: 'Savagery '
+  name: Bestial Claws
   description: 'Increases melee claw attack damage. '
   isUnlocked: 0
 --- !u!1 &1354042080
@@ -6227,9 +6227,9 @@ MonoBehaviour:
     bloodLevelHeight: 23.5
   - name: Wolf Aspect
     bloodLevelHeight: 18
-  - name: Night's Shadow
+  - name: Misty Step
     bloodLevelHeight: 18
-  - name: 'Savagery '
+  - name: Bestial Claws
     bloodLevelHeight: 6
   - name: Supernatural Resistance
     bloodLevelHeight: 6

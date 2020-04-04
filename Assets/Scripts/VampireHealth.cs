@@ -41,6 +41,12 @@ public class VampireHealth : MonoBehaviour
         invulnTimer = Mathf.Max(invulnTimer, amount);
     }
 
+    public void IncreaseHealth()
+    {
+        healthIcons[health].enabled = true;
+        health += 1;
+    }
+
     //Check for contact with enemies
     private void OnTriggerEnter2D(Collider2D collision)
     {

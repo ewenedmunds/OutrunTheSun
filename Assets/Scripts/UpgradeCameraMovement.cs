@@ -27,6 +27,12 @@ public class UpgradeCameraMovement : MonoBehaviour
         upCount.text = "Available Upgrades: " + data.availableUpgrades.ToString();
 
         SetNewTarget(target.gameObject);
+
+        //Base case for if the first upgrade has been unlocked
+        if (GameObject.FindGameObjectWithTag("DataStore").GetComponent<DataStore>().upgrades.Contains("Batwing Cloak"))
+        {
+            upButton.interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -35,6 +41,7 @@ public class UpgradeCameraMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         transform.position = new Vector3(transform.position.x, transform.position.y, -10);
 
+        //Keys to navigate through upgrades
         if (Input.GetKeyDown(KeyCode.A))
         {
             SetNewTarget(target.GetComponent<UpgradeTile>().leftNeighbour);

@@ -25,10 +25,12 @@ public class VampireMovement : MonoBehaviour
     public float attackCooldown;
     private float attackTimer;
     public GameObject clawAttack;
+    public int damage = 1;
 
     //Dash
     public float dashCooldown;
     private float dashTimer;
+    private bool isAbleToDash = false;
 
     //Components
     private Rigidbody2D rb;
@@ -59,7 +61,11 @@ public class VampireMovement : MonoBehaviour
         if (data.upgrades.Contains("Owlfeather Cloak")) { maxJumpsAvailable += 1; }
 
         if (data.upgrades.Contains("Wolf Aspect")) { maxSpeed += 1; }
+        if (data.upgrades.Contains("Misty Step")) { isAbleToDash = true; }
+        if (data.upgrades.Contains("Bestial Claws")) { damage = 2; }
 
+        if (data.upgrades.Contains("Supernatural Resistance")) { health.IncreaseHealth(); }
+        if (data.upgrades.Contains("Undead Fortitude")) { health.IncreaseHealth(); }
     }
 
     private void Update()
@@ -80,7 +86,7 @@ public class VampireMovement : MonoBehaviour
         IsGrounded();
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && !IsBusy())
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && !IsBusy() && isAbleToDash)
         {
             dashTimer = dashCooldown;
             isBusy = true;

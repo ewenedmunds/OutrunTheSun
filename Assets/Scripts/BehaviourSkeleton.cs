@@ -43,6 +43,7 @@ public class BehaviourSkeleton : MonoBehaviour
         }
     }
 
+    //Change direction of movement
     void Flip()
     {
         edgeDetection *= -1;
