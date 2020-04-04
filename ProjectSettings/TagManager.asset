@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Claw
   - Enemy
+  - DataStore
   layers:
   - Default
   - TransparentFX
