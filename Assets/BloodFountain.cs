@@ -25,7 +25,7 @@ public class BloodFountain : MonoBehaviour
     {
         sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         passiveEffect = transform.GetChild(1).GetComponent<ParticleSystem>();
-        consumeEffect = transform.GetChild(1).GetComponent<ParticleSystem>();
+        consumeEffect = transform.GetChild(2).GetComponent<ParticleSystem>();
 
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -52,25 +52,34 @@ public class BloodFountain : MonoBehaviour
 
     private void Empty()
     {
+        isAvailable = false;
+
+        passiveEffect.Stop();
+
         toolTip.enabled = false;
         foreach (SpriteRenderer spr in decoration)
         {
             spr.gameObject.SetActive(false);
         }
+
+        sr.sprite = EmptyFountainSprite;
     }
 
     public void Consume()
     {
-        isAvailable = false;
         data.fountains.Add(name);
         data.availableUpgrades += 1;
 
         consumeEffect.Play();
 
-        toolTip.enabled = false;
-        foreach (SpriteRenderer spr in decoration)
+        Empty();
+    }
+
+    public void Interact()
+    {
+        if (isAvailable)
         {
-            spr.gameObject.SetActive(false);
+            Consume();
         }
     }
 }
