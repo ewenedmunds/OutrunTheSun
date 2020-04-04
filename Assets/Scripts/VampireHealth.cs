@@ -9,6 +9,7 @@ public class VampireHealth : MonoBehaviour
     private Rigidbody2D rb;
     public ParticleSystem deathEffect;
     private Camera cam;
+    public Animator deathAnim;
 
     public int health;
 
@@ -70,6 +71,7 @@ public class VampireHealth : MonoBehaviour
             {
                 Debug.Log("you dead");
                 GetComponent<Animator>().Play("VampDeath");
+                deathAnim.Play("DeathDie");
                 deathEffect.Play();
             }
         }

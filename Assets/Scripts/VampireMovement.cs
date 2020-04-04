@@ -17,7 +17,8 @@ public class VampireMovement : MonoBehaviour
 
     //Double Jump
     public bool isAbleToDoubleJump = false;
-    private bool isJumpAvailable;
+    private int jumpsAvailable;
+    private int maxJumpsAvailable;
     public ParticleSystem doubleJumpParticles;
 
     //Claw Attack
@@ -34,6 +35,7 @@ public class VampireMovement : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
     private VampireHealth health;
+    private DataStore data;
 
     private Camera cam;
     
@@ -45,7 +47,19 @@ public class VampireMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         health = GetComponent<VampireHealth>();
+        data = GameObject.FindGameObjectWithTag("DataStore").GetComponent<DataStore>();
         cam = Camera.main;
+
+        loadUpgrades();
+    }
+
+    private void loadUpgrades()
+    {
+        if (data.upgrades.Contains("Batwing Cloak")) { maxJumpsAvailable += 1; }
+        if (data.upgrades.Contains("Owlfeather Cloak")) { maxJumpsAvailable += 1; }
+
+        if (data.upgrades.Contains("Wolf Aspect")) { maxSpeed += 1; }
+
     }
 
     private void Update()
@@ -83,14 +97,14 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || (isJumpAvailable && isAbleToDoubleJump)) && !IsBusy())
+        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || (jumpsAvailable > 0 && isAbleToDoubleJump)) && !IsBusy())
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpPower));
 
             if (!IsGrounded())
             {
-                isJumpAvailable = false;
+                jumpsAvailable -= 1;
                 doubleJumpParticles.Play();
             }
         }
@@ -176,7 +190,7 @@ public class VampireMovement : MonoBehaviour
         {
             if (Physics2D.Raycast(transform.position + new Vector3(i*0.2f,0,0), Vector2.down, 0.55f, groundLayer).collider != null)
             {
-                isJumpAvailable = true;
+                jumpsAvailable = maxJumpsAvailable;
                 return true;
             }
         }
