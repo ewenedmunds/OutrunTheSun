@@ -26,7 +26,7 @@ public class BehaviourSkeleton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!health.IsStunned())
+        if (!health.IsStunned() && IsGrounded())
         {
             rb.velocity = new Vector2(edgeDetection * startingSpeed, rb.velocity.y);
         }

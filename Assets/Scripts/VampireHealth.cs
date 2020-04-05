@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class VampireHealth : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class VampireHealth : MonoBehaviour
     public Animator deathAnim;
 
     public int health;
+    public bool isAbleToDie = true;
 
     private float invulnTimer;
     public float invulnCooldown;
@@ -20,6 +22,9 @@ public class VampireHealth : MonoBehaviour
     public float knockbackSpeedY = 5;
 
     public Image[] healthIcons;
+
+    public TextMeshProUGUI sunrise;
+    private float sunriseTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +39,19 @@ public class VampireHealth : MonoBehaviour
         {
             invulnTimer -= Time.deltaTime;
         }
+
+        sunriseTimer += Time.deltaTime;
+        if (sunriseTimer >= 300)
+        {
+            health = 0;
+            sunriseTimer = 300;
+            StartDeath();
+        }
+
+        float num = 300f - Mathf.Round(sunriseTimer * 10) / 10f;
+
+        sunrise.text = "Sunrise: " + num.ToString() + "s";
+        
     }
 
     public void AddInvuln(float amount)
@@ -75,11 +93,23 @@ public class VampireHealth : MonoBehaviour
             //Handle death
             if (health <= 0)
             {
-                Debug.Log("you dead");
-                GetComponent<Animator>().Play("VampDeath");
-                deathAnim.Play("DeathDie");
-                deathEffect.Play();
+                StartDeath();
             }
+        }
+    }
+
+    public void StartDeath()
+    {
+        //Make sure death effects are only triggered once
+        if (isAbleToDie)
+        {
+            isAbleToDie = false;
+            Debug.Log("you dead");
+
+            //Play anim effects
+            GetComponent<Animator>().Play("VampDeath");
+            deathAnim.Play("DeathDie");
+            deathEffect.Play();
         }
     }
 }

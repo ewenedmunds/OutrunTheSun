@@ -56,7 +56,9 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(collision.transform.localPosition.x * 18, 4);
 
             //Change health
-            health -= collision.gameObject.transform.parent.GetComponent<VampireMovement>().damage;
+            int damage = 1;
+            if (collision.gameObject.transform.parent.GetComponent<VampireMovement>() != null) { damage = collision.gameObject.transform.parent.GetComponent<VampireMovement>().damage;  }
+            health -= damage;
             if (health <= 0)
             {
                 deathParticles.Play();
