@@ -9,15 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5563334607967558494}
-  - component: {fileID: 5563334607967558495}
   - component: {fileID: 5563334607967558492}
   - component: {fileID: 5563334607967558493}
-  - component: {fileID: 5563334607967558432}
   - component: {fileID: 5563334607967558433}
+  - component: {fileID: 1840012017607061161}
   - component: {fileID: 5563334607967558434}
   - component: {fileID: 5563334607967558435}
-  m_Layer: 16
-  m_Name: Skeleton
+  - component: {fileID: 15073776323888319}
+  m_Layer: 17
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,25 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5563334607967558495
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5563334607967558490}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 543258450611b4c198c3fcf037c4b97c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!70 &5563334607967558492
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -83,35 +64,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5563334607967558490}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 73b4833735963417b92e12bf7dafa96c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5563334607967558432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5563334607967558490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca492bc5569d43079d628b430a2f2bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingSpeed: 3
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!114 &5563334607967558433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,11 +89,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b613227ccbfd34609b257ffa35ea64c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 3
   harmParticles: {fileID: 5563334608369904424}
   deathParticles: {fileID: 5563334607967558435}
   hurtbox: {fileID: 8820545245940703471}
-  knockbackModifier: 15
+  knockbackModifier: 25
+--- !u!114 &1840012017607061161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563334607967558490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31068e97ba184be5bb23b4db353ddac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingSpeed: 3
+  detectionRadius: 6
+  chaseRadius: 12
+  groundAndPlayerLayer:
+    serializedVersion: 2
+    m_Bits: 33792
+  isChasing: 0
 --- !u!199 &5563334607967558434
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -147,7 +131,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 537dd00017d804151838c90ae4a776eb, type: 2}
+  - {fileID: 2100000, guid: f4a6f2dd2f5454e39a71912dcca5e40e, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -444,7 +428,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4908,6 +4892,25 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!95 &15073776323888319
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563334607967558490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf9b406e1f05c4c2a82fd1a517e9fd00, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5563334608369904423
 GameObject:
   m_ObjectHideFlags: 0
@@ -5192,7 +5195,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9674,7 +9677,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 537dd00017d804151838c90ae4a776eb, type: 2}
+  - {fileID: 2100000, guid: f4a6f2dd2f5454e39a71912dcca5e40e, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9788,7 +9791,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4354231566380549168, guid: eff450509cd1d47648aa353e5c7a74c9,
+  m_Sprite: {fileID: -2024800400192785640, guid: 374f284beb569402d8b9c9de98823d98,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

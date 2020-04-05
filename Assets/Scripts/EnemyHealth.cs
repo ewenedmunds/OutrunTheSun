@@ -14,6 +14,9 @@ public class EnemyHealth : MonoBehaviour
 
     public Collider2D hurtbox;
 
+    [Tooltip("Change how far an enemy is knocked back when attacked")]
+    public float knockbackModifier = 15;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
             invulnTimer = 0.3f;
 
             //Knockback from attack
-            GetComponent<Rigidbody2D>().velocity = new Vector2(collision.transform.localPosition.x * 18, 4);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(collision.transform.localPosition.x * knockbackModifier, 4);
 
             //Change health
             int damage = 1;
@@ -62,7 +65,7 @@ public class EnemyHealth : MonoBehaviour
             if (health <= 0)
             {
                 deathParticles.Play();
-                SendMessage("Die");
+                SendMessage("Die", SendMessageOptions.DontRequireReceiver);
             }
 
             collision.gameObject.SendMessageUpwards("RegisterHit");
