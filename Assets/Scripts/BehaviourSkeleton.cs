@@ -32,12 +32,12 @@ public class BehaviourSkeleton : MonoBehaviour
         }
 
         //Check if the skeleton has approached a wall to the side
-        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.3f,0), new Vector2(edgeDetection,0), 0.4f, groundLayer).collider != null && IsGrounded())
+        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.3f,0), new Vector2(edgeDetection,0), 0.4f * transform.localScale.x, groundLayer).collider != null && IsGrounded())
         {
             Flip();
         }
         //Check if the skeleton has approached a ledge to the side
-        else if (Physics2D.Raycast(transform.position + new Vector3(edgeDetection*0.5f,0,0), new Vector2(0, -1), 0.7f, groundLayer).collider == null && IsGrounded())
+        else if (Physics2D.Raycast(transform.position + new Vector3(edgeDetection*0.5f*transform.localScale.x, 0,0), new Vector2(0, -1), 0.7f*transform.localScale.x, groundLayer).collider == null && IsGrounded())
         {
             Flip();
         }
@@ -56,7 +56,7 @@ public class BehaviourSkeleton : MonoBehaviour
     {
         for (int i = -1; i <= 1; i++)
         {
-            if (Physics2D.Raycast(transform.position + new Vector3(i * 0.2f, 0, 0), Vector2.down, 0.55f, groundLayer).collider != null)
+            if (Physics2D.Raycast(transform.position + new Vector3(i * 0.2f, 0, 0), Vector2.down, 0.55f*transform.localScale.x, groundLayer).collider != null)
             {
                 return true;
             }
