@@ -25,7 +25,7 @@ public class BehaviourMushroom : MonoBehaviour
         sporeTimer -= Time.deltaTime;
         if (sporeTimer <= 0)
         {
-            sporeTimer = 99;
+            sporeTimer = 6;
             anim.Play("MushroomAttack");
         }
     }

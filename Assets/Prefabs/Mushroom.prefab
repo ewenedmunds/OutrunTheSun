@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71366591571f34f5b9a22d2f2aa112f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sporeDelay: 0.2
-  delayRandomness: 1.8
+  sporeDelay: 1.5
+  delayRandomness: 1.5
   sporeField: {fileID: 3401265369399276293, guid: 55c342661b6df482cb40180dc9c2cf2f,
     type: 3}
 --- !u!114 &5563334607967558433
