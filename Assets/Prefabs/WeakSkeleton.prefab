@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: startingSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5563334607967558433, guid: 45357fc2969bd44caa367e6357c01bd3,
+        type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5563334607967558435, guid: 45357fc2969bd44caa367e6357c01bd3,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r

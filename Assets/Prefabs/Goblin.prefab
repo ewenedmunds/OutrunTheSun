@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4915010004416102827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4223833957726080565}
+  m_Layer: 16
+  m_Name: SpearPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4223833957726080565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915010004416102827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.213, y: -0.232, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5563334607967558494}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5563334607967558490
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,13 +41,13 @@ GameObject:
   - component: {fileID: 5563334607967558494}
   - component: {fileID: 5563334607967558492}
   - component: {fileID: 5563334607967558493}
+  - component: {fileID: 1222065408285145404}
   - component: {fileID: 5563334607967558433}
-  - component: {fileID: 1840012017607061161}
   - component: {fileID: 5563334607967558434}
   - component: {fileID: 5563334607967558435}
-  - component: {fileID: 15073776323888319}
-  m_Layer: 17
-  m_Name: Ghost
+  - component: {fileID: 4941200238275372049}
+  m_Layer: 16
+  m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,6 +67,7 @@ Transform:
   - {fileID: 5563334608850036680}
   - {fileID: 5563334608369904422}
   - {fileID: 8515227154299496293}
+  - {fileID: 4223833957726080565}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64,19 +95,41 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5563334607967558490}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 73b4833735963417b92e12bf7dafa96c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1222065408285145404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563334607967558490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003018f823ac048ea965b8f4da72b3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingSpeed: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 33792
+  spearPrefab: {fileID: 5651472855003952357, guid: ac41c3d01467d47caa0644acdf4f2747,
+    type: 3}
+  anchorPos: {fileID: 4223833957726080565}
+  sightRadius: 4
+  aimTime: 2
+  throwPower: 8
 --- !u!114 &5563334607967558433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,30 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b613227ccbfd34609b257ffa35ea64c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 2
   harmParticles: {fileID: 5563334608369904424}
   deathParticles: {fileID: 5563334607967558435}
   hurtbox: {fileID: 8820545245940703471}
   knockbackModifier: 25
---- !u!114 &1840012017607061161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5563334607967558490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31068e97ba184be5bb23b4db353ddac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingSpeed: 3
-  detectionRadius: 4
-  chaseRadius: 7
-  groundAndPlayerLayer:
-    serializedVersion: 2
-    m_Bits: 33792
-  isChasing: 0
 --- !u!199 &5563334607967558434
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -131,7 +165,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4a6f2dd2f5454e39a71912dcca5e40e, type: 2}
+  - {fileID: 2100000, guid: 537dd00017d804151838c90ae4a776eb, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -428,7 +462,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4892,7 +4926,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!95 &15073776323888319
+--- !u!95 &4941200238275372049
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -4902,7 +4936,7 @@ Animator:
   m_GameObject: {fileID: 5563334607967558490}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf9b406e1f05c4c2a82fd1a517e9fd00, type: 2}
+  m_Controller: {fileID: 9100000, guid: e3712c2481888403d97d8ff9097e1f2b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5195,7 +5229,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9677,7 +9711,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4a6f2dd2f5454e39a71912dcca5e40e, type: 2}
+  - {fileID: 2100000, guid: 537dd00017d804151838c90ae4a776eb, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9791,7 +9825,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2024800400192785640, guid: 374f284beb569402d8b9c9de98823d98,
+  m_Sprite: {fileID: -503904800580686299, guid: f438c0f5a7e7a42d5a47b416995dd3f7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

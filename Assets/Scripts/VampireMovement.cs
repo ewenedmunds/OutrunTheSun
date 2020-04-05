@@ -252,6 +252,10 @@ public class VampireMovement : MonoBehaviour
     {
         isBusy = false;
         rb.velocity = new Vector2(-rb.velocity.x * 0.7f, rb.velocity.y);
+
+        //Allow player to attack again quicker
+        attackTimer = Mathf.Min(attackTimer, 0.1f);
+
         anim.Play("VampIdle");
     }
 }
