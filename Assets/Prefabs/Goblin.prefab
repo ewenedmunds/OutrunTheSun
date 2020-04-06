@@ -127,7 +127,7 @@ MonoBehaviour:
   spearPrefab: {fileID: 5651472855003952357, guid: ac41c3d01467d47caa0644acdf4f2747,
     type: 3}
   anchorPos: {fileID: 4223833957726080565}
-  sightRadius: 4
+  sightRadius: 6
   aimTime: 2.7
   throwPower: 8
 --- !u!114 &5563334607967558433
