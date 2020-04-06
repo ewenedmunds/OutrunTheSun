@@ -25,6 +25,7 @@ public class BehaviourGoblin : MonoBehaviour
     public float aimTime;
     public float throwPower;
     private float aimTimer = 2;
+    private float stopAimTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -49,12 +50,33 @@ public class BehaviourGoblin : MonoBehaviour
             AimSpear();
         }
 
-        if (isAiming && aimTimer > 0)
+        if (isAiming && aimTimer > 0 && !health.IsStunned())
         {
             aimTimer -= Time.deltaTime;
             if (aimTimer <= 0)
             {
                 ThrowSpear();
+            }
+
+            col = Physics2D.Raycast(transform.position, -transform.position + player.transform.position, sightRadius, groundLayer).collider;
+            if (col == null || col.gameObject != player)
+            {
+                stopAimTimer += Time.deltaTime;
+                if (stopAimTimer >= 0.5f)
+                {
+                    stopAimTimer = 0;
+                    Destroy(mySpear);
+                    isAiming = false;
+                    GetComponent<Animator>().Play("GoblinIdle");
+                }
+            }
+            else
+            {
+                stopAimTimer -= Time.deltaTime;
+                if (stopAimTimer <= 0)
+                {
+                    stopAimTimer = 0;
+                }
             }
         }
 
@@ -64,6 +86,11 @@ public class BehaviourGoblin : MonoBehaviour
             var dir = player.transform.position - mySpear.transform.position;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
             mySpear.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        if(IsGrounded() && !health.IsStunned())
+        {
+            rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(0, rb.velocity.y), startingSpeed * Time.deltaTime);
         }
     }
 
@@ -95,6 +122,8 @@ public class BehaviourGoblin : MonoBehaviour
             isAiming = false;
             mySpear.GetComponent<Rigidbody2D>().velocity = mySpear.transform.up * throwPower;
             mySpear.transform.parent = null;
+
+            mySpear = null;
 
             GetComponent<Animator>().Play("GoblinIdle");
         }

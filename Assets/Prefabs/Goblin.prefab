@@ -103,7 +103,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: 73b4833735963417b92e12bf7dafa96c, type: 2}
+  m_Material: {fileID: 6200000, guid: 190ff946486224eb398b5b903b1e609c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003018f823ac048ea965b8f4da72b3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingSpeed: 0
+  startingSpeed: 4
   groundLayer:
     serializedVersion: 2
     m_Bits: 33792
@@ -128,7 +128,7 @@ MonoBehaviour:
     type: 3}
   anchorPos: {fileID: 4223833957726080565}
   sightRadius: 4
-  aimTime: 2
+  aimTime: 2.7
   throwPower: 8
 --- !u!114 &5563334607967558433
 MonoBehaviour:
