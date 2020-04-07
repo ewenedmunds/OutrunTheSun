@@ -62,13 +62,18 @@ public class EnemyHealth : MonoBehaviour
             int damage = 1;
             if (collision.gameObject.transform.parent.GetComponent<VampireMovement>() != null) { damage = collision.gameObject.transform.parent.GetComponent<VampireMovement>().damage;  }
             health -= damage;
+
             if (health <= 0)
             {
                 deathParticles.Play();
                 SendMessage("Die", SendMessageOptions.DontRequireReceiver);
             }
+            else
+            {
+                SendMessage("Hurt", damage, SendMessageOptions.DontRequireReceiver);
+            }
 
-            collision.gameObject.SendMessageUpwards("RegisterHit");
+            collision.gameObject.SendMessageUpwards("RegisterHit", SendMessageOptions.DontRequireReceiver);
         }
     }
 
