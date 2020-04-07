@@ -121,6 +121,9 @@ public class BehaviourSpectre : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, Random.Range(-30f, 30f));
 
+        chaseRadius = 50;
+        detectionRadius = 50;
+
         damagePhaseThreshold -= amount;
         if (damagePhaseThreshold <= 0)
         {
@@ -145,7 +148,7 @@ public class BehaviourSpectre : MonoBehaviour
             contact.enabled = false;
             hurtbox.SetActive(false);
 
-            if (Random.Range(0,2) == 1)
+            if (phase % 2 == 0)
             {
                 bossState = "ArmSummon";
             }

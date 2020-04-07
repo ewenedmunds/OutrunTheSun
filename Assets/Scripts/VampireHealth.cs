@@ -26,6 +26,8 @@ public class VampireHealth : MonoBehaviour
     public TextMeshProUGUI sunrise;
     private float sunriseTimer;
 
+    public bool isCountingDown = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,11 @@ public class VampireHealth : MonoBehaviour
             invulnTimer -= Time.deltaTime;
         }
 
-        sunriseTimer += Time.deltaTime;
+        if (isCountingDown)
+        {
+            sunriseTimer += Time.deltaTime;
+        }
+
         if (sunriseTimer >= 300)
         {
             health = 0;

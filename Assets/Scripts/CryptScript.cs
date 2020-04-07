@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class CryptScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool isAbleToWin = true;
 
-    // Update is called once per frame
-    void Update()
+    public Animator sunriseAnim;
+    public Animator panelAnim;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Player" && isAbleToWin)
+        {
+            isAbleToWin = false;
+            sunriseAnim.speed = 0;
+            panelAnim.Play("VictoryAnim");
+            GameObject.FindGameObjectWithTag("Player").GetComponent<VampireHealth>().isCountingDown = false;
+        }
     }
 }

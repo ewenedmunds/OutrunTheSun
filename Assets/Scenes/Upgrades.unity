@@ -7167,7 +7167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgrades: []
   fountains: []
-  availableUpgrades: 8
+  availableUpgrades: 0
 --- !u!4 &1940704368
 Transform:
   m_ObjectHideFlags: 0
@@ -7687,13 +7687,13 @@ MonoBehaviour:
   - name: Supernatural Resistance
     bloodLevelHeight: 18
   - name: Bestial Claws
-    bloodLevelHeight: 6
+    bloodLevelHeight: 8
   - name: Misty Step
-    bloodLevelHeight: 6
+    bloodLevelHeight: 8
   - name: Owlfeather Cloak
-    bloodLevelHeight: 6
+    bloodLevelHeight: 8
   - name: Undead Fortitude
-    bloodLevelHeight: 6
+    bloodLevelHeight: 8
   bloodSpeed: 8
 --- !u!1 &2087374748
 GameObject:

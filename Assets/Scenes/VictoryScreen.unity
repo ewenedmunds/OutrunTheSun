@@ -2727,7 +2727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgrades: []
   fountains: []
-  availableUpgrades: 8
+  availableUpgrades: 0
 --- !u!4 &1940704368
 Transform:
   m_ObjectHideFlags: 0
