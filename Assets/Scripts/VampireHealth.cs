@@ -60,7 +60,7 @@ public class VampireHealth : MonoBehaviour
                 StartDeath();
             }
 
-            float num = 300f - Mathf.Round(sunriseTimer * 10) / 10f;
+            float num = Mathf.RoundToInt(300f - Mathf.RoundToInt(sunriseTimer));
 
             sunrise.text = "Sunrise: " + num.ToString() + "s";
         }
@@ -80,9 +80,12 @@ public class VampireHealth : MonoBehaviour
 
     public void GainHealth()
     {
-        healthIcons[health].GetComponent<Animator>().Play("BloodRecover");
-        healthIcons[health].color = new Color(1, 1, 1, 1f);
-        health = Mathf.Min(health+1, maxHealth);
+        if (health >= 1 && health <= 3)
+        {
+            healthIcons[health].GetComponent<Animator>().Play("BloodRecover");
+            healthIcons[health].color = new Color(1, 1, 1, 1f);
+            health = Mathf.Min(health + 1, maxHealth);
+        }
     }
 
     //Check for contact with enemies
@@ -90,7 +93,7 @@ public class VampireHealth : MonoBehaviour
     {
         GameObject collider = collision.gameObject;
 
-        if (collider.tag == "Enemy" && invulnTimer <= 0)
+        if (collider.tag == "Enemy" && invulnTimer <= 0 && health >= 1)
         {
             invulnTimer = invulnCooldown;
             health -= 1;

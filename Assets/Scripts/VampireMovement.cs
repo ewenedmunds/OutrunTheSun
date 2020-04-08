@@ -190,15 +190,8 @@ public class VampireMovement : MonoBehaviour
             }
         }
 
-        //Interaction
-        else if (Input.GetKeyDown(KeyCode.E) && !IsBusy())
-        {
-            GameObject newInteraction = Instantiate(interactionSphere);
-            newInteraction.transform.position = transform.position;
-        }
-
         //Idle, slow velocity
-                else if (!IsBusy())
+        else if (!IsBusy())
         {
             rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, accelerationSpeed * Time.deltaTime), rb.velocity.y);
             if (IsGrounded())
@@ -219,6 +212,14 @@ public class VampireMovement : MonoBehaviour
                 anim.Play("VampFall");
             }
         }
+
+        //Interaction
+        if (Input.GetKeyDown(KeyCode.E) && !IsBusy())
+        {
+            GameObject newInteraction = Instantiate(interactionSphere);
+            newInteraction.transform.position = transform.position;
+        }
+
     }
 
     void EndDash()

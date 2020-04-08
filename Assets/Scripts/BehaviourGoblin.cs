@@ -60,11 +60,11 @@ public class BehaviourGoblin : MonoBehaviour
                 ThrowSpear();
             }
 
-            col = Physics2D.Raycast(transform.position, -transform.position + player.transform.position, sightRadius, groundLayer).collider;
+            col = Physics2D.Raycast(transform.position, -transform.position + player.transform.position, sightRadius*2, groundLayer).collider;
             if (col == null || col.gameObject != player)
             {
                 stopAimTimer += Time.deltaTime;
-                if (stopAimTimer >= 0.5f)
+                if (stopAimTimer >= 1f)
                 {
                     stopAimTimer = 0;
                     Destroy(mySpear);

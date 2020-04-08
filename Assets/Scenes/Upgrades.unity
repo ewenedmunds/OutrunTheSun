@@ -844,8 +844,6 @@ GameObject:
   m_Component:
   - component: {fileID: 197808110}
   - component: {fileID: 197808113}
-  - component: {fileID: 197808112}
-  - component: {fileID: 197808111}
   m_Layer: 0
   m_Name: UpgradeTile (11)
   m_TagString: Untagged
@@ -867,51 +865,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!61 &197808111
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197808109}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &197808112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197808109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 135529739}
-  rightNeighbour: {fileID: 1732285723}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 197808109}
-  name: Undead Fortitude
-  description: Increases your maximum health.
-  isUnlocked: 0
 --- !u!212 &197808113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1434,8 +1387,6 @@ GameObject:
   m_Component:
   - component: {fileID: 285107209}
   - component: {fileID: 285107212}
-  - component: {fileID: 285107211}
-  - component: {fileID: 285107210}
   m_Layer: 0
   m_Name: UpgradeTile (10)
   m_TagString: Untagged
@@ -1457,51 +1408,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &285107210
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285107208}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &285107211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285107208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 1068464671}
-  rightNeighbour: {fileID: 1347151095}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 772524589}
-  name: Owlfeather Cloak
-  description: Allows you to triple jump in the air.
-  isUnlocked: 0
 --- !u!212 &285107212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1561,8 +1467,6 @@ GameObject:
   m_Component:
   - component: {fileID: 313072236}
   - component: {fileID: 313072239}
-  - component: {fileID: 313072238}
-  - component: {fileID: 313072237}
   m_Layer: 0
   m_Name: UpgradeTile (12)
   m_TagString: Untagged
@@ -1584,51 +1488,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &313072237
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313072235}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &313072238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313072235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 135529739}
-  rightNeighbour: {fileID: 1732285723}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 313072235}
-  name: Undead Fortitude
-  description: Increases your maximum health.
-  isUnlocked: 0
 --- !u!212 &313072239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3885,8 +3744,6 @@ GameObject:
   m_Component:
   - component: {fileID: 904592572}
   - component: {fileID: 904592575}
-  - component: {fileID: 904592574}
-  - component: {fileID: 904592573}
   m_Layer: 0
   m_Name: UpgradeTile (7)
   m_TagString: Untagged
@@ -3908,51 +3765,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!61 &904592573
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904592571}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &904592574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904592571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 135529739}
-  rightNeighbour: {fileID: 1732285723}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 904592571}
-  name: Undead Fortitude
-  description: Increases your maximum health.
-  isUnlocked: 0
 --- !u!212 &904592575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5571,8 +5383,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1148215110}
   - component: {fileID: 1148215113}
-  - component: {fileID: 1148215112}
-  - component: {fileID: 1148215111}
   m_Layer: 0
   m_Name: UpgradeTile (13)
   m_TagString: Untagged
@@ -5594,51 +5404,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1148215111
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148215109}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1148215112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148215109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 1068464671}
-  rightNeighbour: {fileID: 1347151095}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 772524589}
-  name: Owlfeather Cloak
-  description: Allows you to triple jump in the air.
-  isUnlocked: 0
 --- !u!212 &1148215113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6814,8 +6579,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1391691884}
   - component: {fileID: 1391691887}
-  - component: {fileID: 1391691886}
-  - component: {fileID: 1391691885}
   m_Layer: 0
   m_Name: UpgradeTile (7)
   m_TagString: Untagged
@@ -6837,51 +6600,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1391691885
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391691883}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1391691886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391691883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 1068464671}
-  rightNeighbour: {fileID: 1347151095}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 772524589}
-  name: Owlfeather Cloak
-  description: Allows you to triple jump in the air.
-  isUnlocked: 0
 --- !u!212 &1391691887
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7351,8 +7069,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1439955051}
   - component: {fileID: 1439955054}
-  - component: {fileID: 1439955053}
-  - component: {fileID: 1439955052}
   m_Layer: 0
   m_Name: UpgradeTile (9)
   m_TagString: Untagged
@@ -7374,51 +7090,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1439955052
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439955050}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1439955053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439955050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 1068464671}
-  rightNeighbour: {fileID: 1347151095}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 772524589}
-  name: Owlfeather Cloak
-  description: Allows you to triple jump in the air.
-  isUnlocked: 0
 --- !u!212 &1439955054
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9984,8 +9655,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2048963781}
   - component: {fileID: 2048963784}
-  - component: {fileID: 2048963783}
-  - component: {fileID: 2048963782}
   m_Layer: 0
   m_Name: UpgradeTile (8)
   m_TagString: Untagged
@@ -10007,51 +9676,6 @@ Transform:
   m_Father: {fileID: 1755025920}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
---- !u!61 &2048963782
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048963780}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &2048963783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048963780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b29c9d86eefb479aa513e0abf01289d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftNeighbour: {fileID: 135529739}
-  rightNeighbour: {fileID: 1732285723}
-  downNeighbour: {fileID: 1969720061}
-  upNeighbour: {fileID: 2048963780}
-  name: Undead Fortitude
-  description: Increases your maximum health.
-  isUnlocked: 0
 --- !u!212 &2048963784
 SpriteRenderer:
   m_ObjectHideFlags: 0
