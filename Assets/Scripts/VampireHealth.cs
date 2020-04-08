@@ -13,6 +13,7 @@ public class VampireHealth : MonoBehaviour
     public Animator deathAnim;
 
     public int health;
+    private int maxHealth;
     public bool isAbleToDie = true;
 
     private float invulnTimer;
@@ -33,6 +34,7 @@ public class VampireHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = health;
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
     }
@@ -72,7 +74,15 @@ public class VampireHealth : MonoBehaviour
     public void IncreaseHealth()
     {
         healthIcons[health].enabled = true;
-        health += 1;
+        maxHealth += 1;
+        GainHealth();
+    }
+
+    public void GainHealth()
+    {
+        healthIcons[health].GetComponent<Animator>().Play("BloodRecover");
+        healthIcons[health].color = new Color(1, 1, 1, 1f);
+        health = Mathf.Min(health+1, maxHealth);
     }
 
     //Check for contact with enemies

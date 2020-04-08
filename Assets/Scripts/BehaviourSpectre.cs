@@ -38,6 +38,9 @@ public class BehaviourSpectre : MonoBehaviour
     public GameObject leftChains;
     public GameObject rightChains;
 
+    public AudioSource angerSource;
+    public AudioSource chaseSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +68,7 @@ public class BehaviourSpectre : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, home, startingSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, home, 2*startingSpeed * Time.deltaTime);
 
             //If spectre has returned to centre of arena
             if ((home-transform.position).magnitude <= 0.3f)
@@ -111,6 +114,7 @@ public class BehaviourSpectre : MonoBehaviour
             if (col != null && col.gameObject == player)
             {
                 bossState = "Chase";
+                chaseSource.Play();
                 leftChains.SetActive(true);
             }
         }
@@ -128,6 +132,8 @@ public class BehaviourSpectre : MonoBehaviour
         if (damagePhaseThreshold <= 0)
         {
             phase += 1;
+
+            angerSource.Play();
 
             if (phase >= 3)
             {

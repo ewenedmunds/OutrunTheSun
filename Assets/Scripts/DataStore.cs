@@ -32,4 +32,12 @@ public class DataStore : MonoBehaviour
     {
         fountains.Add(fountain);
     }
+
+    private void Update()
+    {
+        if (GameObject.FindGameObjectWithTag("MainMenu") != null)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

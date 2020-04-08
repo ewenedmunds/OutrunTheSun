@@ -7,6 +7,7 @@ TagManager:
   - Claw
   - Enemy
   - DataStore
+  - MainMenu
   layers:
   - Default
   - TransparentFX

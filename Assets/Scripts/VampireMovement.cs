@@ -27,11 +27,16 @@ public class VampireMovement : MonoBehaviour
     private float attackTimer;
     public GameObject clawAttack;
     public int damage = 1;
+    private int healthRecover;
+    private bool isVampirism = false;
 
     //Dash
     public float dashCooldown;
     private float dashTimer;
     private bool isAbleToDash = false;
+    private bool isBatAspect = false;
+    public GameObject dashSlash;
+    private bool isDashing = false;
 
     //Components
     private Rigidbody2D rb;
@@ -74,6 +79,9 @@ public class VampireMovement : MonoBehaviour
 
         if (data.upgrades.Contains("Supernatural Resistance")) { health.IncreaseHealth(); }
         if (data.upgrades.Contains("Undead Fortitude")) { health.IncreaseHealth(); }
+
+        if (data.upgrades.Contains("Vampirism")) { isVampirism = true; }
+        if (data.upgrades.Contains("Bat Aspect")) { isBatAspect = true; }
     }
 
     private void Update()
@@ -104,11 +112,28 @@ public class VampireMovement : MonoBehaviour
             health.AddInvuln(0.3f);
 
             anim.Play("VampDash");
+            isDashing = true;
 
             rb.velocity = new Vector2(1.6f*maxSpeed, 0);
             if (sr.flipX == true)
             {
-                rb.velocity = new Vector2(-1.6f*maxSpeed, 0);
+                rb.velocity = new Vector2(-1.6f * maxSpeed, 0);
+            }
+            if (isBatAspect)
+            {
+                dashSlash.SetActive(true);
+                dashSlash.GetComponent<Collider2D>().enabled = true;
+
+                if (sr.flipX == true)
+                {
+                    dashSlash.transform.localPosition = new Vector3(0.25f, 0, 0);
+                    dashSlash.transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else
+                {
+                    dashSlash.transform.localPosition = new Vector3(-0.25f, 0, 0);
+                    dashSlash.transform.localScale = new Vector3(1, 1, 1);
+                }
             }
         }
 
@@ -200,6 +225,13 @@ public class VampireMovement : MonoBehaviour
     {
         isBusy = false;
         anim.Play("VampIdle");
+        isDashing = false;
+
+        if (isBatAspect)
+        {
+            dashSlash.SetActive(false);
+            dashSlash.GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     void EndClaw()
@@ -263,12 +295,25 @@ public class VampireMovement : MonoBehaviour
     //Register a melee hit on an enemy
     public void RegisterHit()
     {
-        isBusy = false;
-        rb.velocity = new Vector2(-rb.velocity.x * 0.7f, rb.velocity.y);
+        if (isVampirism)
+        {
+            healthRecover += damage;
+            if (healthRecover >= 15)
+            {
+                healthRecover -= 15;
+                health.GainHealth();
+            }
+        }
 
-        //Allow player to attack again quicker
-        attackTimer = Mathf.Min(attackTimer, 0.1f);
+        if (!isDashing)
+        {
+            isBusy = false;
+            rb.velocity = new Vector2(-rb.velocity.x * 0.7f, rb.velocity.y);
 
-        anim.Play("VampIdle");
+            //Allow player to attack again quicker
+            attackTimer = Mathf.Min(attackTimer, 0.1f);
+
+            anim.Play("VampIdle");
+        }
     }
 }
