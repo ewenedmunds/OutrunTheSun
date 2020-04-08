@@ -34,7 +34,7 @@ public class BehaviourGoblin : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<EnemyHealth>();
 
-        rb.velocity = new Vector2(startingSpeed, 0);
+        rb.velocity = new Vector2(0, 0);
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -50,7 +50,7 @@ public class BehaviourGoblin : MonoBehaviour
             AimSpear();
         }
 
-        if (isAiming && aimTimer > 0 && !health.IsStunned())
+        if (isAiming && aimTimer > 0 && !health.IsStunned() && health.health > 0)
         {
             aimTimer -= Time.deltaTime;
             if (aimTimer <= 0)
@@ -91,6 +91,11 @@ public class BehaviourGoblin : MonoBehaviour
         if(IsGrounded() && !health.IsStunned())
         {
             rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(0, rb.velocity.y), startingSpeed * Time.deltaTime);
+        }
+
+        if(health.health <= 0)
+        {
+            mySpear.transform.position = new Vector3(-999, -999);
         }
     }
 
@@ -144,11 +149,13 @@ public class BehaviourGoblin : MonoBehaviour
 
     public void Die()
     {
-        if (mySpear != null)
+        mySpear.transform.position = new Vector3(-999, -999);
+        if (isAiming)
         {
             isAiming = false;
             Destroy(mySpear);
         }
         GetComponent<Animator>().Play("GoblinDie");
+        Destroy(mySpear);
     }
 }
