@@ -49,17 +49,19 @@ public class VampireHealth : MonoBehaviour
             sunriseTimer += Time.deltaTime;
         }
 
-        if (sunriseTimer >= 300)
+        if (sunrise != null)
         {
-            health = 0;
-            sunriseTimer = 300;
-            StartDeath();
+            if (sunriseTimer >= 300)
+            {
+                health = 0;
+                sunriseTimer = 300;
+                StartDeath();
+            }
+
+            float num = 300f - Mathf.Round(sunriseTimer * 10) / 10f;
+
+            sunrise.text = "Sunrise: " + num.ToString() + "s";
         }
-
-        float num = 300f - Mathf.Round(sunriseTimer * 10) / 10f;
-
-        sunrise.text = "Sunrise: " + num.ToString() + "s";
-        
     }
 
     public void AddInvuln(float amount)

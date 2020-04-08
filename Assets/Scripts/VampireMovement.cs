@@ -94,7 +94,7 @@ public class VampireMovement : MonoBehaviour
         IsGrounded();
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && !IsBusy() && isAbleToDash)
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && dashTimer <= 0 && !IsBusy() && isAbleToDash)
         {
             dashTimer = dashCooldown;
             isBusy = true;
@@ -113,7 +113,7 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || (jumpsAvailable > 0 && isAbleToDoubleJump)) && !IsBusy())
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && (IsGrounded() || (jumpsAvailable > 0 && isAbleToDoubleJump)) && !IsBusy())
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpPower));
@@ -134,7 +134,7 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Move Left
-        if (Input.GetKey(KeyCode.A) && !IsBusy())
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && !IsBusy())
         {
             if (rb.velocity.x > -maxSpeed)
             {
@@ -150,7 +150,7 @@ public class VampireMovement : MonoBehaviour
         }
 
         //Move Right
-        else if (Input.GetKey(KeyCode.D) && !IsBusy())
+        else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !IsBusy())
         {
             if (rb.velocity.x < maxSpeed)
             {
