@@ -27,6 +27,8 @@ public class BehaviourGoblin : MonoBehaviour
     private float aimTimer = 2;
     private float stopAimTimer = 0;
 
+    public AudioSource throwSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -124,6 +126,8 @@ public class BehaviourGoblin : MonoBehaviour
     {
         if (isAiming)
         {
+            throwSource.Play();
+
             isAiming = false;
             mySpear.GetComponent<Rigidbody2D>().velocity = mySpear.transform.up * throwPower;
             mySpear.transform.parent = null;

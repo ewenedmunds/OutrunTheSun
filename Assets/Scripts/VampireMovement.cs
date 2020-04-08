@@ -41,6 +41,13 @@ public class VampireMovement : MonoBehaviour
     private DataStore data;
 
     private Camera cam;
+
+    //Audio Sources
+    [Space(10)]
+    [Header("Audio Sources")]
+    public AudioSource jumpSource;
+    public AudioSource clawSource;
+    public AudioSource dashSource;
     
 
     // Start is called before the first frame update
@@ -92,6 +99,8 @@ public class VampireMovement : MonoBehaviour
             dashTimer = dashCooldown;
             isBusy = true;
 
+            dashSource.Play();
+
             health.AddInvuln(0.3f);
 
             anim.Play("VampDash");
@@ -108,6 +117,8 @@ public class VampireMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpPower));
+
+            jumpSource.Play();
 
             if (!IsGrounded())
             {
@@ -245,6 +256,8 @@ public class VampireMovement : MonoBehaviour
         }
 
         anim.Play("VampClaw");
+
+        clawSource.Play();
     }
 
     //Register a melee hit on an enemy

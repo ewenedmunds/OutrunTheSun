@@ -20,6 +20,8 @@ public class BloodFountain : MonoBehaviour
 
     private Transform playerPos;
 
+    public AudioSource bloodSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +73,8 @@ public class BloodFountain : MonoBehaviour
         data.availableUpgrades += 1;
 
         consumeEffect.Play();
+
+        bloodSource.Play();
 
         Empty();
     }

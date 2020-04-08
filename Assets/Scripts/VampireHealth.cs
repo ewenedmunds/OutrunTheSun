@@ -28,6 +28,8 @@ public class VampireHealth : MonoBehaviour
 
     public bool isCountingDown = true;
 
+    public AudioSource hurtSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +82,8 @@ public class VampireHealth : MonoBehaviour
         {
             invulnTimer = invulnCooldown;
             health -= 1;
+
+            hurtSource.Play();
 
             //Set health icons
             healthIcons[health].color = new Color(1, 1, 1, 0.3f);

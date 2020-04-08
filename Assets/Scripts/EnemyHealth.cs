@@ -17,11 +17,10 @@ public class EnemyHealth : MonoBehaviour
     [Tooltip("Change how far an enemy is knocked back when attacked")]
     public float knockbackModifier = 15;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Space(10)]
+    [Header("Audio Sources")]
+    public AudioSource hurtSource;
+    public AudioSource deathSource;
 
     // Update is called once per frame
     void Update()
@@ -63,8 +62,11 @@ public class EnemyHealth : MonoBehaviour
             if (collision.gameObject.transform.parent.GetComponent<VampireMovement>() != null) { damage = collision.gameObject.transform.parent.GetComponent<VampireMovement>().damage;  }
             health -= damage;
 
+            hurtSource.Play();
+
             if (health <= 0)
             {
+                deathSource.Play();
                 deathParticles.Play();
                 SendMessage("Die", SendMessageOptions.DontRequireReceiver);
             }

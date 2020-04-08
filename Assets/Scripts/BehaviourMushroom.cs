@@ -13,6 +13,8 @@ public class BehaviourMushroom : MonoBehaviour
 
     private Animator anim;
 
+    public AudioSource sporeSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,8 @@ public class BehaviourMushroom : MonoBehaviour
 
     public void SporeAttack()
     {
+        sporeSource.Play();
+
         GameObject newSpores = Instantiate(sporeField);
         newSpores.transform.position = transform.position;
 
