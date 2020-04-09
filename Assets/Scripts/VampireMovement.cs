@@ -37,6 +37,7 @@ public class VampireMovement : MonoBehaviour
     private bool isBatAspect = false;
     public GameObject dashSlash;
     private bool isDashing = false;
+    public ParticleSystem batParticles;
 
     //Components
     private Rigidbody2D rb;
@@ -121,6 +122,8 @@ public class VampireMovement : MonoBehaviour
             }
             if (isBatAspect)
             {
+                batParticles.Play();
+
                 dashSlash.SetActive(true);
                 dashSlash.GetComponent<Collider2D>().enabled = true;
 
